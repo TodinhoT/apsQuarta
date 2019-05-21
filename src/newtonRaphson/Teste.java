@@ -23,8 +23,10 @@ public class Teste {
 		
 		do {
 			j = jk;
+			
 			for (int i = 0; i < 10; i++) {
-				funcao += deposito[i]*Math.pow(t_s-tempo[i], 1+j);
+				if(deposito[i] == 0 && tempo[i] == 0) continue;
+				funcao += deposito[i]*Math.pow(1-j,t_s-tempo[i]);
 				derivada +=(t_s-tempo[i])*deposito[i]*Math.pow(1+j, (t_s-tempo[i]-1));
 			}
 			jk = jk-(funcao/derivada);
@@ -47,6 +49,8 @@ public class Teste {
 		saldo = Double.parseDouble(entrada.nextLine());
 		System.out.println("Digite o tf final");
 		t_s = Integer.parseInt(entrada.nextLine());
+		
+		System.out.println(newton(0.001));
 	}
 
 }
