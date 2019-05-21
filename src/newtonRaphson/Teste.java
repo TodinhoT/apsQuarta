@@ -26,9 +26,10 @@ public class Teste {
 			
 			for (int i = 0; i < 10; i++) {
 				if(deposito[i] == 0 && tempo[i] == 0) continue;
-				funcao += deposito[i]*Math.pow(1-j,t_s-tempo[i]);
+				funcao += deposito[i]*Math.pow(1+j,t_s-tempo[i]);
 				derivada +=(t_s-tempo[i])*deposito[i]*Math.pow(1+j, (t_s-tempo[i]-1));
 			}
+			funcao -= saldo;
 			jk = jk-(funcao/derivada);
 		} while (Math.abs(jk-j)>=epsilon);
 		
