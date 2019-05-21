@@ -37,7 +37,6 @@ public class Teste {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner entrada = new Scanner(System.in);
 		for (int i = 0; i < 10; i++) {
 			System.out.println("Digite o " + (i+1) + " depósito");
@@ -51,6 +50,7 @@ public class Teste {
 		t_s = Integer.parseInt(entrada.nextLine());
 		
 		System.out.println(newton(0.001));
+		entrada.close();
 	}
 
 }
