@@ -18,24 +18,23 @@ public class Teste {
 		double jk = 0;
 		double funcao = 0;
 		double derivada = 0;
-		double limite;
+		double verif;
 
 		do {
-			funcao = deposito[0] * Math.pow(1 + j, t_s - tempo[0]);
-			derivada = (t_s - tempo[0]) * deposito[0] * Math.pow(1 + j, (t_s - tempo[0] - 1));
-						
+
 			for (int i = 1; i < 10; i++) {
+				if (i == 1) {
+					funcao = deposito[0] * Math.pow(1 + j, t_s - tempo[0]);
+					derivada = (t_s - tempo[0]) * deposito[0] * Math.pow(1 + j, (t_s - tempo[0] - 1));
+				}
 				funcao += deposito[i] * Math.pow(1 + j, t_s - tempo[i]);
 				derivada += (t_s - tempo[i]) * deposito[i] * Math.pow(1 + j, (t_s - tempo[i] - 1));
 			}
 
-			jk = j - ((funcao-saldo) / derivada);
-			limite = Math.abs(jk - j);
-			
-			System.out.println(jk);
-			System.out.println(limite);
+			jk = j - ((funcao - saldo) / derivada);
+			verif = Math.abs(jk - j);
 			j = jk;
-		} while (limite >= epsilon);
+		} while (verif >= epsilon);
 
 		return jk;
 	}
