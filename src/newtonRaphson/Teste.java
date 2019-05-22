@@ -53,7 +53,7 @@ public class Teste {
 		LinkedList<Double> listaJ = new LinkedList<Double>();
 		LinkedList<Double> listaJk = new LinkedList<Double>();
 		LinkedList<Double> listaVerif = new LinkedList<Double>();
-		DecimalFormat df = new DecimalFormat("####.00");
+		DecimalFormat df = new DecimalFormat("####");
 		double[] rendimentoAcumulado = new double[deposito.length];
 		double[] rendimentoMensal = new double[deposito.length];
 		// iniciando a lista com o primeiro juros
@@ -115,7 +115,7 @@ public class Teste {
 				"---------------------------------------------------------------------------------------------------------------------------------");
 		System.out.println("");
 
-		// Print dos dados de todos os dados
+		// Print geral dos dados
 		armazenaDeposito();
 		armazenaSaldo();
 		System.out.println("");
@@ -127,7 +127,7 @@ public class Teste {
 				System.out.println("  " + (i + 1) + "\t|-------------|" + 0 + "\t|-------------|\t" + 0
 						+ "\t|-------------|\t" + 0 + "\t|-------------|\t" + 0 + "\t|-------------|\t" + 0 + "\t|");
 			} else {
-				System.out.println("  " + (i + 1) + "\t|-------------|" + deposito[i - 2] + "\t|-------------|\t"
+				System.out.println("  " + (i + 1) + "\t|-------------|" + df.format(deposito[i - 2]) + "\t|-------------|\t"
 						+ df.format(depositos.peek()) + "\t|-------------|\t" + df.format(saldoT.peek())
 						+ "\t|-------------|\t" + df.format(rendimentoMensal[i - 2]) + "\t|-------------|\t"
 						+ df.format(rendimentoAcumulado[i - 2]) + "\t|");
@@ -153,7 +153,7 @@ public class Teste {
 //		System.out.println("Digite o tf final");
 //		t_s = Integer.parseInt(entrada.nextLine());
 
-		System.out.println(newton(0.001));
+		System.out.println("Juros : " + newton(0.001));
 		entrada.close();
 	}
 
