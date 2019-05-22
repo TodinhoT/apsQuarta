@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Teste {
+public class Newton {
 	// Declaracao das variaveis
 	static double[] deposito = new double[10];
 	static int[] tempo = new int[10];
@@ -100,6 +100,7 @@ public class Teste {
 
 		// Print de todos os juros
 		listaJ.removeLast();
+		System.out.println("");
 		System.out.println(
 				"Interacao ---------------------- Jk ------------------------------------ Jk+1 ------------------------------ |(Jk+1)-Jk| --------");
 		for (int i = 0; i < listaJ.size(); i++) {
@@ -127,10 +128,10 @@ public class Teste {
 				System.out.println("  " + (i + 1) + "\t|-------------|" + 0 + "\t|-------------|\t" + 0
 						+ "\t|-------------|\t" + 0 + "\t|-------------|\t" + 0 + "\t|-------------|\t" + 0 + "\t|");
 			} else {
-				System.out.println("  " + (i + 1) + "\t|-------------|" + deposito[i - 2] + "\t|-------------|\t"
-						+ df.format(depositos.peek()) + "\t|-------------|\t" + df.format(saldoT.peek())
-						+ "\t|-------------|\t" + df.format(rendimentoMensal[i - 2]) + "\t|-------------|\t"
-						+ df.format(rendimentoAcumulado[i - 2]) + "\t|");
+				System.out.println("  " + (i + 1) + "\t|-------------|" + df.format(deposito[i - 2])
+						+ "\t|-------------|\t" + df.format(depositos.peek()) + "\t|-------------|\t"
+						+ df.format(saldoT.peek()) + "\t|-------------|\t" + df.format(rendimentoMensal[i - 2])
+						+ "\t|-------------|\t" + df.format(rendimentoAcumulado[i - 2]) + "\t|");
 				depositos.pop();
 				saldoT.pop();
 			}
@@ -154,7 +155,9 @@ public class Teste {
 		System.out.println("Digite o tf final");
 		t_s = Integer.parseInt(entrada.nextLine());
 
-		System.out.println("\nJuros mensais: " + newton(0.001) + "(ou aprox. " + (porcent.format(newton(0.001)*100)) + "%)");
+		double chernoirengousRosa = newton(0.001);
+		System.out.println("\nJuros mensais: " + chernoirengousRosa + "(ou aprox. "
+				+ (porcent.format(chernoirengousRosa * 100)) + "%)");
 		entrada.close();
 	}
 
