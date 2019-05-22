@@ -82,14 +82,9 @@ public class Teste {
 		armazenaDeposito();
 		armazenaSaldo();
 		for (int i = 0; i < rendimentoAcumulado.length; i++) {
-			if (i == 0) {
-				rendimentoAcumulado[i] = 0;
-			} else {
-				rendimentoAcumulado[i] = saldoT.peek() - depositos.peek();
-				depositos.pop();
-				saldoT.pop();
-			}
-
+			rendimentoAcumulado[i] = saldoT.peek() - depositos.peek();
+			depositos.pop();
+			saldoT.pop();
 		}
 
 		// Calculo do rendimento mensal
