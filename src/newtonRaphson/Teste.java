@@ -7,10 +7,10 @@ import java.util.Stack;
 
 public class Teste {
 	// Declaracao das variaveis
-	static double[] deposito = { 1000, 1200, 100, 0, 1100, 0, 900, 0, 0, 0 };
-	static int[] tempo = { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-	static double saldo = 5000;
-	static int t_s = 12;
+	static double[] deposito = new double[10];
+	static int[] tempo = new int[10];
+	static double saldo;
+	static int t_s;
 	static double j = 0.5;
 	static double jk = 0;
 	static double funcao = 0;
@@ -53,7 +53,7 @@ public class Teste {
 		LinkedList<Double> listaJ = new LinkedList<Double>();
 		LinkedList<Double> listaJk = new LinkedList<Double>();
 		LinkedList<Double> listaVerif = new LinkedList<Double>();
-		DecimalFormat df = new DecimalFormat("####");
+		DecimalFormat df = new DecimalFormat("#");
 		double[] rendimentoAcumulado = new double[deposito.length];
 		double[] rendimentoMensal = new double[deposito.length];
 		// iniciando a lista com o primeiro juros
@@ -115,7 +115,7 @@ public class Teste {
 				"---------------------------------------------------------------------------------------------------------------------------------");
 		System.out.println("");
 
-		// Print geral dos dados
+		// Print geral de todos os dados
 		armazenaDeposito();
 		armazenaSaldo();
 		System.out.println("");
@@ -127,7 +127,7 @@ public class Teste {
 				System.out.println("  " + (i + 1) + "\t|-------------|" + 0 + "\t|-------------|\t" + 0
 						+ "\t|-------------|\t" + 0 + "\t|-------------|\t" + 0 + "\t|-------------|\t" + 0 + "\t|");
 			} else {
-				System.out.println("  " + (i + 1) + "\t|-------------|" + df.format(deposito[i - 2]) + "\t|-------------|\t"
+				System.out.println("  " + (i + 1) + "\t|-------------|" + deposito[i - 2] + "\t|-------------|\t"
 						+ df.format(depositos.peek()) + "\t|-------------|\t" + df.format(saldoT.peek())
 						+ "\t|-------------|\t" + df.format(rendimentoMensal[i - 2]) + "\t|-------------|\t"
 						+ df.format(rendimentoAcumulado[i - 2]) + "\t|");
@@ -142,18 +142,19 @@ public class Teste {
 
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
-//		for (int i = 0; i < 10; i++) {
-//			System.out.println("Digite o " + (i + 1) + " depósito");
-//			deposito[i] = Double.parseDouble(entrada.nextLine());
-//			System.out.println("Digite o mês do " + (i + 1) + " depósito");
-//			tempo[i] = Integer.parseInt(entrada.nextLine());
-//		}
-//		System.out.println("Digite o saldo");
-//		saldo = Double.parseDouble(entrada.nextLine());
-//		System.out.println("Digite o tf final");
-//		t_s = Integer.parseInt(entrada.nextLine());
+		DecimalFormat porcent = new DecimalFormat("#.00");
+		for (int i = 0; i < 10; i++) {
+			System.out.println("Digite o " + (i + 1) + " depósito");
+			deposito[i] = Double.parseDouble(entrada.nextLine());
+			System.out.println("Digite o mês do " + (i + 1) + " depósito");
+			tempo[i] = Integer.parseInt(entrada.nextLine());
+		}
+		System.out.println("Digite o saldo");
+		saldo = Double.parseDouble(entrada.nextLine());
+		System.out.println("Digite o tf final");
+		t_s = Integer.parseInt(entrada.nextLine());
 
-		System.out.println("Juros : " + newton(0.001));
+		System.out.println("\nJuros mensais: " + newton(0.001) + "(ou aprox. " + (porcent.format(newton(0.001)*100)) + "%)");
 		entrada.close();
 	}
 
