@@ -1,3 +1,5 @@
+//Felipe Massaharu - 20915239
+//Gabriel Tosi - 21105541
 package newtonRaphson;
 
 import java.text.DecimalFormat;
